@@ -1,0 +1,14 @@
+<!-- credito.html -->
+<form method="post" action="{% url 'credito' %}">
+  {% csrf_token %}
+  {{ form_cliente.as_p }}
+  {{ form_credito.as_p }}
+  <button type="submit">Guardar</button>
+</form>
+
+{% if credito_disponible is not None and credito_utilizado is not None %}
+  <p>Crédito Utilizado: {{ credito_utilizado }}</p>
+  <p>Crédito Disponible: {{ credito_disponible }}</p>
+{% else %}
+  <p>No se ha seleccionado un cliente con crédito.</p>
+{% endif %}

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div>
+    <h1>Estoy en ventas</h1>
+
+    <form method="post" action="{% url 'Ventas' %}">
+        {% csrf_token %}
+        <label for="rut_comprador">Ingrese el RUT del comprador:</label>
+        <input type="text" name="rut_comprador" id="rut_comprador" required>
+        <button type="submit">Consultar Crédito</button>
+    </form>
+
+    {% if cliente %}
+        <p>Información del Cliente:</p>
+        <p>Nombre: {{ cliente.nombre }}</p>
+        <p>RUT: {{ cliente.rut }}</p>
+
+        {% if credito %}
+            <p>Información del Crédito:</p>
+            <p>Monto Total: {{ credito.monto_total }}</p>
+            <p>Monto Pagado: {{ credito.monto_pagado }}</p>
+            <p>Saldo Pendiente: {{ credito.saldo_pendiente }}</p>
+        {% else %}
+            <p>El cliente no tiene crédito registrado.</p>
+        {% endif %}
+    {% endif %}
+</div>
+{% endblock %}
