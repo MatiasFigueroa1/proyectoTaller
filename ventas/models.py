@@ -18,4 +18,4 @@ class Credito(models.Model):
     cliente = models.OneToOneField('Cliente', on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"{self.cliente.nombre} - Credito: {self.cantCredito}"
+        return f"{self.cliente.nombre} - Crédito: {self.cantCredito}"
